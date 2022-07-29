@@ -10,13 +10,6 @@ pipeline {
                  sh "ls -lart"
             }
         }
-        stage('Build mvn project'){
-            steps{
-                 script{
-
-                 }
-            }
-        }
     }
 }
 
