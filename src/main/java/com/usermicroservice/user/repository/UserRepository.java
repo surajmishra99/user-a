@@ -11,6 +11,7 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<UserEntity, String> {
     @Query("select u from UserEntity u where u.user_email = :n")
     public List<UserEntity> getAll(@Param("n")  String d);
+
     @Query("select case when count(u)>0 then true else false end from UserEntity u where u.user_phone = :n")
     public boolean isExitNumber(@Param("n") Long number);
 

@@ -1,17 +1,20 @@
 pipeline {
 
     agent any
+        tools{
+            maven 'maven_3.8.6'
+        }
     stages {
-        stage("builds"){
-            steps{
-                echo 'building the application'
-            }
+        stage('Checkout from github'){
+                    steps{
+                        checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/surajmishra99/user.git']]])
+                    }
         }
-        stage("test"){
-            steps{
-                echo 'testing the application'
-            }
-        }
+        stage('Build mvn project'){
+                    steps{
+                        sh 'mvn clean package shade:shade'
+                    }
+                }
         stage("deploy"){
             steps{
                 echo 'deploying the application'
