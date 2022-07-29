@@ -12,7 +12,7 @@ pipeline {
         stage('Build mvn project'){
             steps{
                  script{
-                      sh 'mvn clean install package shade:shade'
+                      sh 'pwd'
                  }
             }
         }
