@@ -12,7 +12,9 @@ pipeline {
         }
         stage('Build mvn project'){
                     steps{
-                        sh 'mvn clean package shade:shade'
+                        script{
+                            sh 'mvn clean package shade:shade'
+                        }
                     }
                 }
         stage("deploy"){
