@@ -12,7 +12,7 @@ pipeline {
         stage('Build mvn project'){
             steps{
                  script{
-                      sh 'pwd'
+                      sh 'Get-Location'
                  }
             }
         }
