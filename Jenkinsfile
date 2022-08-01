@@ -9,10 +9,12 @@ pipeline {
                  checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/surajmishra99/user-a.git']]])
             }
         }
-        stage('Build mvn project'){
-            steps{
-                 sh 'mvn clean package shade:shade'
-            }
+        stage('Build stage') {
+                    steps {
+                        withMaven(maven : 'maven_3.1.0'){
+                            bat 'mvn clean install'
+                        }
+                    }
         }
     }
 }
